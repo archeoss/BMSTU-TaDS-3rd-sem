@@ -1,0 +1,3 @@
+#define PROCESSED_AMOUNT 1000
+#define FIRST 1
+#define SECOND 2

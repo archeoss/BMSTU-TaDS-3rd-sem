@@ -1,0 +1,5 @@
+#define MATRIX_LEN 5
+#define FILE_LEN 256
+
+#define SHORT_VALUE 32767
+#define INT_VALUE 2147483647
