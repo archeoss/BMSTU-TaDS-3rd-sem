@@ -157,7 +157,7 @@ void replace_node(node_t **node, int *cmp_count)
 
 int pop_from_bin(node_t **node, int num_to_del)
 {
-    int cmp_count = 0;
+    int cmp_count = 1;
     node_t *father_node = *node;
     node_t *res_find = find_bin(&father_node, num_to_del, &cmp_count);
     if (father_node == res_find)
@@ -365,24 +365,4 @@ void get_avg_time(char *filename_src, uint64_t *bin_time, uint64_t *bal_time, ui
     free(hash_table.hash_table);
     free(hash_table.is_occupied);
     remove("temp.txt");   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if (*bin_time < *bal_time)
-    // {
-    //     uint64_t ttt = *bin_time;
-    //     *bin_time = *bal_time;
-    //     *bal_time = ttt;
-    // }
 }

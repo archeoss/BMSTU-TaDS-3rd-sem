@@ -132,22 +132,6 @@ int main(int args, char **keys)
             cmp_count = 0;
             t = tick();
             remove_me(&bal_tree.arr, num_to_del, &cmp_count);
-            // bal_tree.arr = balancer(bal_tree.arr);
-            // if (check_avl(bal_tree.arr) > 1)
-            // {
-            //     printf(RED"Balance destroyed in balanced tree, rebuilding...\n"CLR);
-            //     free_tree(bal_tree.arr);
-
-            //     bal_tree.size = tree.size;
-            //     t = tick();
-            //     bal_tree.arr = balance_tree(&tree);
-            //     t = tick() - t;
-            //     graph_tree_to_dot(graphs_dir, bal_tree_name, bal_tree.arr, tree.size);
-            //     snprintf(command, BUFSIZ, "dot -Tpng %s%s.dot -o %s%s.png", graphs_dir, bal_tree_name, graphs_dir, bal_tree_name);
-            //     system(command);
-            //     printf(GREEN"%s.png generated at %s\n"CLR, bal_tree_name, graphs_dir);
-            //     printf(YELLOW"Balanced tree generated in %ld ticks\n"CLR, t);
-            // }
             t = tick() - t;
             printf(BPURPLE"Binary tree (balanced)\n"CLR);
             printf(YELLOW"Deletion from binary balanced tree consumed %ld ticks\n"CLR, t);

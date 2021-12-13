@@ -68,7 +68,6 @@ void replace_avl_node(node_avl_t **node, int *cmp_count)
             free(tmp);
         }
     }
-
 }
 
 int pop_from_avl(node_avl_t **node, int num_to_del)
@@ -179,31 +178,66 @@ node_avl_t* balance(node_avl_t* node)
 
 node_avl_t* findmin(node_avl_t* node, int *cmp_count) 
 {
+    if (!node->left)
+        return node;
+
     (*cmp_count)++;
 	return node->left ? findmin(node->left, cmp_count) : node;
 }
 
 node_avl_t* removemin(node_avl_t* node, int *cmp_count)
 {
-    (*cmp_count)++;
-	if (node->left == 0)
+	if (!node->left)
 		return node->right;
+    (*cmp_count)++;
 	node->left = removemin(node->left, cmp_count);
 	
     return balance(node);
 }
 
-void remove_me(node_avl_t **node, int num_to_del, int *cmp_count)
+// void remove_me(node_avl_t **node, int num_to_del, int *cmp_count)
+// {
+// 	if (!*node)
+//         return;
+
+//     node_avl_t **father_node = node;
+//     node_avl_t *result = find_avl(father_node, num_to_del, cmp_count);
+// 	if (result)
+// 	{
+// 		node_avl_t *left = (*node)->left;
+// 		node_avl_t *right = (*node)->right;
+		
+//         if (!right)
+//         {
+//             *father_node = left;
+//             return;
+//         }
+
+//         node_avl_t* min = findmin(right, cmp_count);
+// 		min->right = removemin(right, cmp_count);
+// 		min->left = left;
+		
+//         *node = balance(min);
+//         return;
+// 	}
+
+//     *node = balance(*node);
+//     return;
+// }
+
+int remove_me(node_avl_t **node, int num_to_del, int *cmp_count)
 {
 	if (!*node)
-        return;
+        return 0;
 
+    int res = remove_me(&(*node)->left, num_to_del, cmp_count);
+    if (res)
+    {
+        *node = balance(*node);
+        return res;
+    }
     (*cmp_count)++;
-    if (num_to_del < (*node)->data)
-		remove_me(&(*node)->left, num_to_del, cmp_count);
-	else if (num_to_del > (*node)->data)
-		remove_me(&(*node)->right, num_to_del, cmp_count);
-    else
+    if ((*node)->data == num_to_del)
 	{
 		node_avl_t *left = (*node)->left;
 		node_avl_t *right = (*node)->right;
@@ -211,7 +245,7 @@ void remove_me(node_avl_t **node, int num_to_del, int *cmp_count)
         if (!right)
         {
             *node = left;
-            return;
+            return 1;
         }
 
         node_avl_t* min = findmin(right, cmp_count);
@@ -219,9 +253,11 @@ void remove_me(node_avl_t **node, int num_to_del, int *cmp_count)
 		min->left = left;
 		
         *node = balance(min);
-        return;
+        return 1;
 	}
+    else
+    	remove_me(&(*node)->right, num_to_del, cmp_count);
 
     *node = balance(*node);
-    return;
+    return 1;
 }

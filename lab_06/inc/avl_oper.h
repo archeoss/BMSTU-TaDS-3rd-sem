@@ -20,6 +20,6 @@ node_avl_t *find_avl(node_avl_t **node, int num_to_find, int *cmp_count);
 int pop_from_avl(node_avl_t **node, int num_to_del);
 void replace_avl_node(node_avl_t **node, int *cmp_count);
 node_avl_t* balance(node_avl_t* p);
-void remove_me(node_avl_t **node, int num_to_del, int *cmp_count);
+int remove_me(node_avl_t **node, int num_to_del, int *cmp_count);
 
 #endif
