@@ -14,11 +14,25 @@ typedef struct tree_node
     struct tree_node *right;
 } node_t;
 
+typedef struct node_avl
+{
+    int data;
+    int height;
+    struct node_avl *left;
+    struct node_avl *right;
+} node_avl_t;
+
 typedef struct
 {
     node_t *arr;
     int size;
 } tree_arr;
+
+typedef struct
+{
+    node_avl_t *arr;
+    int size;
+} tree_avl;
 
 typedef struct 
 {
