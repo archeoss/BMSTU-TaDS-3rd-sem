@@ -4,7 +4,7 @@ ODIR := ./out
 SRCDIR := ./src
 INCDIR := ./inc
 CONST_HEAD := $(INCDIR)/errors.h $(INCDIR)/structures.h $(INCDIR)/colors.h
-OBJS := $(ODIR)/io.o $(ODIR)/operations.o $(ODIR)/graphvis.o $(ODIR)/hash.o $(ODIR)/timer.o 
+OBJS := $(ODIR)/io.o $(ODIR)/operations.o $(ODIR)/graphvis.o $(ODIR)/hash.o $(ODIR)/timer.o $(ODIR)/avl_oper.o
 LIBS := -Iinc 
 
 all : app.exe
@@ -20,6 +20,9 @@ $(ODIR)/hash.o : $(SRCDIR)/hash.c $(INCDIR)/hash.h $(CONST_HEAD)
 
 $(ODIR)/timer.o : $(SRCDIR)/timer.c $(INCDIR)/timer.h $(CONST_HEAD)
 	$(CC) $(KEYS) -c $(SRCDIR)/timer.c -o $@ $(LIBS)
+
+$(ODIR)/avl_oper.o : $(SRCDIR)/avl_oper.c $(INCDIR)/avl_oper.h $(CONST_HEAD)
+	$(CC) $(KEYS) -c $(SRCDIR)/avl_oper.c -o $@ $(LIBS)
 
 $(ODIR)/graphvis.o : $(SRCDIR)/graphvis.c $(INCDIR)/graphvis.h $(CONST_HEAD)
 	$(CC) $(KEYS) -c $(SRCDIR)/graphvis.c -o $@ $(LIBS)

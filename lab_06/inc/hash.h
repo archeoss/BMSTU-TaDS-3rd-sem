@@ -11,6 +11,7 @@
 #include <time.h>
 
 #define HASH_RATE 1.2
+#define MAX_TIMES 100
 
 int gen_hashtable(char *filename, hash_t *hash_table, int mode);
 int hash_find(hash_t *hash_table, int num_to_find, int *comprasions, int (*hash_func)(hash_t *, int));

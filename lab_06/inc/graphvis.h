@@ -9,5 +9,6 @@
 #include <stdio.h>
 
 void graph_tree_to_dot(char *cwd, char *tree_name, node_t *self, int show_dots);
+void graphV_tree_to_dot(char *cwd, char *tree_name, node_avl_t *self, int show_dots);
 
 #endif
