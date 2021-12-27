@@ -72,6 +72,9 @@ int main(int args, char **keys)
         printf(BLUE"Граф, на основе списка смежности занимает %ld байт\n"CLR, get_size(&grph));
         free_array(grph.array, grph.size);
     }
+    else if (error_code == INVALID_INPUT)
+        printf(RED"Invalid Input. Exiting the program...\n"CLR);
+
     
     return error_code;
 }
